@@ -7,7 +7,7 @@ function App() {
 
   return (<div>
     <h2>app component header</h2>
-    <Users/>
+    {/*<Users/>*/}
 
     <UserChoser/>
 
