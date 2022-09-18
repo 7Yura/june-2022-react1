@@ -5,9 +5,9 @@ export default function User(props) {
         <h2>{user.id} - {user.name} </h2>
         <p>{user.address.city} <br/> {user.email}</p>
 
-        <button onClick={() => {
-            lift(user);
-        }}>details
-        </button>
+        {/*<button onClick={() => {*/}
+        {/*    lift(user);*/}
+        {/*}}>details*/}
+        {/*</button>*/}
     </div>);
 }
