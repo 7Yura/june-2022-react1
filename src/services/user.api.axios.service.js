@@ -7,16 +7,5 @@ let axiosInstance = axios.create({
 const getLaunchesAxios = () => {
     return axiosInstance.get()
 }
-//
-// const getUserAxios = (id) => {
-//     return axiosInstance.get('/' + id)
-// }
-//
-//
-// //https://jsonplaceholder.typicode.com/users/1/posts
-// const getUserPosts = (id) => {
-//     return axiosInstance.get('/'+id)
-
-// }
 
 export {getLaunchesAxios}
