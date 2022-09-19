@@ -15,8 +15,8 @@ const getUserAxios = (id) => {
 
 //https://jsonplaceholder.typicode.com/users/1/posts
 const getUserPosts = (id) => {
-    return axiosInstance.get('/'+id)
+    return axiosInstance.get('/'+id+'/posts')
 
 }
 
-export {getUsersAxios, getUserAxios}
+export {getUsersAxios, getUserAxios,getUserPosts}
