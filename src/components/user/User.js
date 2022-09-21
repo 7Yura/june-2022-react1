@@ -1,13 +1,10 @@
-export default function User(props) {
-    let {item: user, lift} = props;
+const User = ({user,getUserId}) => {
 
-    return (<div>
-        <h2>{user.id} - {user.name} </h2>
-        <p>{user.address.city} <br/> {user.email}</p>
-
-        <button onClick={() => {
-            lift(user);
-        }}>details
-        </button>
-    </div>);
+    return (
+        <div>
+            <h3>{user.id} -- {user.name}</h3>
+            <button onClick={() => getUserId(user.id)}>Click me</button>
+        </div>
+    )
 }
+export {User};

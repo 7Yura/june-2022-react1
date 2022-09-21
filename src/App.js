@@ -1,17 +1,24 @@
+// Отримати всіх користувачів з jsonplaceholder, вивести їх.
+// Біля кожного користувача зробити кнопку, при натисканні на яку в Апп компоненті з'являються всі пости поточного користувача
+// Запити робити через axios, організація коду через сервіси
+
+
 import './App.css';
-import Users from "./components/users/Users";
-import UserChoser from "./components/user-choser/UserChoser";
+import {Posts, Users} from "./components";
+import {postService} from "./services";
+import {useState} from "react";
 
 function App() {
+    const [posts,setPosts] = useState([]);
+    const getUserId = (userId) => {
+        postService.getPosts(userId).then(({data}) => setPosts(data))
+    }
 
+    return (<div>
+        <Users getUserId={getUserId}/>
+        <Posts posts={posts}/>
 
-  return (<div>
-    <h2>app component header</h2>
-    <Users/>
-
-    <UserChoser/>
-
-  </div>);
+    </div>);
 }
 
 export default App;
