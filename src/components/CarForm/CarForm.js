@@ -8,7 +8,7 @@ import {carService} from "../../services";
 
 const CarForm = ({setCars}) => {
     const {register, handleSubmit, reset, formState: {errors, isValid}, setValue} = useForm({
-        // resolver: joiResolver(carValidator),
+        resolver: joiResolver(carValidator),
         mode: 'all'
     });
 
