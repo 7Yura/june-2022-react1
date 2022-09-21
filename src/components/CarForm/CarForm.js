@@ -8,7 +8,7 @@ import {carService} from "../../services";
 
 const CarForm = ({setCars}) => {
     const {register, handleSubmit, reset, formState: {errors, isValid}, setValue} = useForm({
-        // resolver: joiResolver(carValidator),
+        resolver: joiResolver(carValidator),
         mode: 'all'
     });
 
@@ -20,9 +20,9 @@ const CarForm = ({setCars}) => {
 
     const submit = async (car) => {
         console.log(car);
-        // const {data} = await carService.create(car);
-        // setCars(cars => [...cars, data])
-        // reset()
+        const {data} = await carService.create(car);
+        setCars(cars => [...cars, data])
+        reset()
     };
 
     return (
@@ -40,8 +40,8 @@ const CarForm = ({setCars}) => {
             {errors.price && <span>{errors.price.message}</span>}
             <input type="text" placeholder={'year'} {...register('year', {valueAsNumber: true})}/>
             {errors.year && <span>{errors.year.message}</span>}
-            <input type="text" placeholder={'engine'} {...register('property.engine', {valueAsNumber: true})}/>
-            <input type="text" placeholder={'wheels'} {...register('property.wheels', {valueAsNumber: true})}/>
+            {/*<input type="text" placeholder={'engine'} {...register('property.engine', {valueAsNumber: true})}/>*/}
+            {/*<input type="text" placeholder={'wheels'} {...register('property.wheels', {valueAsNumber: true})}/>*/}
             <button disabled={!isValid}>Save</button>
         </form>
     );
