@@ -12,9 +12,7 @@ const Users = ({getUserId}) => {
 
     return (
         <div>
-            {
-                users.map(user => <User key={user.id} user={user} getUserId={getUserId}/>)
-            }
+            {users.map(user => (<User key={user.id} user={user} getUserId={getUserId}/>))}
         </div>
     )
 }
