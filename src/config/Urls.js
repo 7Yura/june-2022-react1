@@ -1,6 +1,6 @@
 const baseURL = 'https://jsonplaceholder.typicode.com';
 const urls = {
-    user:'/user',
+    users:'/users',
     posts: '/posts'
 }
 export {baseURL, urls}
