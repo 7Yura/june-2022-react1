@@ -1,11 +1,14 @@
-import {Cars} from "./components";
+import {Users} from "./components";
 
-const App = () => {
-  return (
-      <div>
-        <Cars/>
-      </div>
-  );
-};
+function App() {
 
-export {App};
+
+
+    return (<div>
+
+        <Users/>
+
+    </div>);
+}
+
+export default App;
