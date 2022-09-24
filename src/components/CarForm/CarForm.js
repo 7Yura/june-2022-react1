@@ -6,22 +6,35 @@ import {carValidator} from "../../validators";
 import {carService} from "../../services";
 
 
-const CarForm = ({setCars}) => {
+const CarForm = ({setCars, carForUpdate, setCarForUpdate}) => {
     const {register, handleSubmit, reset, formState: {errors, isValid}, setValue} = useForm({
         resolver: joiResolver(carValidator),
         mode: 'all'
     });
 
     useEffect(() => {
-        setValue('model', 'BMW')
-        setValue('price', 0)
-        setValue('year', 1990)
-    }, [])
+        if (carForUpdate) {
+            setValue('model', carForUpdate.model, {shouldValidate: true})
+            setValue('price', carForUpdate.price, {shouldValidate: true})
+            setValue('year', carForUpdate.year, {shouldValidate: true})
+        }
+    }, [carForUpdate, setValue])
 
     const submit = async (car) => {
         console.log(car);
-        const {data} = await carService.create(car);
-        setCars(cars => [...cars, data])
+        if (carForUpdate) {
+            const {data} = await carService.updateById(carForUpdate.id, car);
+            setCars((cars) => {
+                const findCar = cars.find(value => value.id === carForUpdate.id);
+                Object.assign(findCar, data)
+                setCarForUpdate(null)
+                return [...cars]
+            })
+        } else {
+            const {data} = await carService.create(car);
+            setCars(cars => [...cars, data])
+        }
+
         reset()
     };
 
@@ -42,7 +55,7 @@ const CarForm = ({setCars}) => {
             {errors.year && <span>{errors.year.message}</span>}
             {/*<input type="text" placeholder={'engine'} {...register('property.engine', {valueAsNumber: true})}/>*/}
             {/*<input type="text" placeholder={'wheels'} {...register('property.wheels', {valueAsNumber: true})}/>*/}
-            <button disabled={!isValid}>Save</button>
+            <button disabled={!isValid}>{carForUpdate ? 'Update' : 'Save'}</button>
         </form>
     );
 };
