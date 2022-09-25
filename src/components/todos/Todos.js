@@ -1,11 +1,11 @@
 import React, { useEffect,useState} from 'react';
+import {Todo} from "../todo/Todo";
 
-import Todo from "../todo/Todo";
+
 // import {getTodoAxios} from "../../services/todo.api.service";
 
 
 const Todos = () => {
-
     const [todos, setTodos] = useState([]);
     useEffect(() => {
 
@@ -13,13 +13,16 @@ const Todos = () => {
         .then(value => value.json())
         .then(value => {
             setTodos(value);
+            console.log(value);
         });
     }, []);
     // useEffect(() => {
     //
-    //     getTodoAxios().then(({value}) =>
-    //         setTodos(value.data))
-    //     console.log(todos.data);
+    //     getTodoAxios().then(value => {
+    //         setTodos(value);
+    //         console.log(value);
+    //     });
+    //
     // }, []);
     return (
         <div>
