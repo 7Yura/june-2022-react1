@@ -1,16 +1,35 @@
 import './App.css';
-import Users from "./components/users/Users";
-import UserChoser from "./components/user-choser/UserChoser";
+// import Users from "./components/users/Users";
+// import UserChoser from "./components/user-choser/UserChoser";
+import {
+  BrowserRouter,
+    Route,
+    Routes,
+    Link,
+    Outlet
+} from "react-router-dom";
+
+import {Home} from "./components/home/Home";
+// import Users from "./components/users/Users";
+import {Todos} from "./components/todos/Todos";
 
 function App() {
 
 
   return (<div>
-    <h2>app component header</h2>
-    <Users/>
 
-    <UserChoser/>
-
+    <ul>
+      <li><Link to={'/'}>Home page</Link></li>
+      <li><Link to={'/todos page'}>todos page</Link></li>
+      <li><Link to={'/albums page'}>albums page</Link></li>
+    </ul>
+<hr/>
+    <Routes>
+      {/*<Route path={'/'} element={<Home/>}/>*/}
+      <Route index element={<Home/>}/>
+      <Route path={'/todos page'} element={<Todos/>}/>
+      {/*<Route path={'/albums page'} element={}/>*/}
+    </Routes>
   </div>);
 }
 

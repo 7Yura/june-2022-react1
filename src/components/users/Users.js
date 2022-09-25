@@ -1,6 +1,6 @@
 import User from "../user/User";
 import {useEffect, useState} from "react";
-import {getUser, getUsers} from "../../services/user.api.service";
+// import {getUser, getUsers} from "../../services/user.api.service";
 import {getUsersAxios} from "../../services/user.api.axios.service";
 
 
