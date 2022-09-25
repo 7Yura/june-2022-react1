@@ -8,13 +8,13 @@ const Todos = () => {
 
     const [todos, setTodos] = useState([]);
     useEffect(() => {
-        console.log(setTodos(todos));
+        console.log(todos)
         // getUsers().then(value => setUsers(value));
-        getTodoAxios().then(value => setTodos(value.data))
+        getTodoAxios().then(({data}) => setTodos(data))
     }, []);
     return (
         <div>
-            {todos.map(todo => (<Todo key={todo.id} todo={todo}/>))}
+            {todos.map((todo,index) => (<Todo key={index} todo={todo}/>))}
         </div>
     );
 };
