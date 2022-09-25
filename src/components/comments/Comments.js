@@ -1,4 +1,5 @@
-import React, {useEffect, useState} from "@types/react";
+import React, {useEffect, useState} from 'react';
+import {Outlet} from "react-router-dom";
 
 import {getCommentsAxios} from "../../services/comment.api.service";
 import {Comment} from "../comment/Comment";
@@ -23,7 +24,9 @@ const Comments = () => {
 
     }, []);
     return (
+
         <div>
+            <Outlet/>
             {comments.map((comment,index) => (<Comment key={index} comment={comment}/>))}
         </div>
     );
