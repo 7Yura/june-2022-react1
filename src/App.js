@@ -10,6 +10,7 @@ import {
 import {Home} from "./components/home/Home";
 // import Users from "./components/users/Users";
 import {Todos} from "./components/todos/Todos";
+import {Comments} from "./components/comments/Comments";
 
 function App() {
 
@@ -19,14 +20,16 @@ function App() {
     <ul>
       <li><Link to={'/'}>Home page</Link></li>
       <li><Link to={'/todos page'}>todos page</Link></li>
-      <li><Link to={'/albums page'}>albums page</Link></li>
+      <li><Link to={'/comments page'}>comments page</Link></li>
     </ul>
 <hr/>
     <Routes>
+
       <Route path={'/'} element={<Home/>}/>
       {/*<Route index element={<Home/>}/>*/}
       <Route path={'todos page'} element={<Todos/>}/>
       {/*<Route path={'/albums page'} element={}/>*/}
+      <Route path={'comments page'} element={<Comments/>}/>
     </Routes>
   </div>);
 }
