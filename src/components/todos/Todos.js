@@ -1,17 +1,23 @@
-import React, {useEffect, useState} from 'react';
+import React, { useState} from 'react';
 
 import Todo from "../todo/Todo";
-import {getTodoAxios} from "../../services/todo.api.service";
-// import {getUsersAxios} from "../../services/user.api.axios.service";
+// import {getTodoAxios} from "../../services/todo.api.service";
+
 
 const Todos = () => {
 
     const [todos, setTodos] = useState([]);
-    useEffect(() => {
-        console.log(todos)
-        // getUsers().then(value => setUsers(value));
-        getTodoAxios().then(({data}) => setTodos(data))
-    }, []);
+    fetch('https://jsonplaceholder.typicode.com/todos')
+        .then(value => value.json())
+        .then(value => {
+            setTodos(value);
+        });
+    // useEffect(() => {
+    //
+    //     getTodoAxios().then(({value}) =>
+    //         setTodos(value.data))
+    //     console.log(todos.data);
+    // }, []);
     return (
         <div>
             {todos.map((todo,index) => (<Todo key={index} todo={todo}/>))}
