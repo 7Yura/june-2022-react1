@@ -1,7 +1,6 @@
 import React, { useEffect,useState} from 'react';
+
 import {Todo} from "../todo/Todo";
-
-
 import {getTodoAxios} from "../../services/todo.api.service";
 
 
