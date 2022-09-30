@@ -1,5 +1,5 @@
-import {useReducer} from "react";
-import {useRef} from "react";
+import {useReducer, useRef} from "react";
+
 
 const init = (initialValue) => {
   return {counter1: initialValue, counter2: initialValue}
@@ -26,26 +26,29 @@ const reducer = (state, action) => {
   }
   return {...state}
 }
-const name = useRef();
-const age = useRef();
-
-const submit = (e) => {
-  e.preventDefault()
-  const data = {name: name.current.value, age: age.current.value}
-  console.log(data);
-};
+// eslint-disable-next-line react-hooks/rules-of-hooks
+// const name = useRef();
+// // eslint-disable-next-line react-hooks/rules-of-hooks
+// const age = useRef();
+//
+// const submit = (e) => {
+//   e.preventDefault()
+//   const data = {name: name.current.value, age: age.current.value}
+//   console.log(data);
+// };
 
 const App = () => {
   const [state, dispatch] = useReducer(reducer, 0, init);
   return (
       <div>
+
         <h1>Add cat: {state.counter1}</h1>
         <h1>Add dog: {state.counter2}</h1>
-        <form onSubmit={submit}>
-          <input type="text" placeholder={'name'} ref={name}/>
-          <input type="text" placeholder={'age'} ref={age}/>
-          <button>save</button>
-        </form>
+        {/*<form onSubmit={submit}>*/}
+        {/*  <input type="text" placeholder={'name'} ref={name}/>*/}
+        {/*  <input type="text" placeholder={'age'} ref={age}/>*/}
+        {/*  <button onClick={() => dispatch({type: ''})}>save</button>*/}
+        {/*</form>*/}
         {/*<form onSubmit={submit}>*/}
         {/*  <input type="text" placeholder={'name'} ref={name}/>*/}
         {/*  <input type="text" placeholder={'age'} ref={age}/>*/}
