@@ -30,17 +30,19 @@ const App = () => {
   const [state, dispatch] = useReducer(reducer, 0, init);
   return (
       <div>
-        <h1>counter1: {state.counter1}</h1>
-        <h1>counter2: {state.counter2}</h1>
-        <button onClick={() => dispatch({type: 'INC1'})}>inc</button>
-        <button onClick={() => dispatch({type: 'DEC1'})}>dec</button>
-        <button onClick={() => dispatch({type: 'RESET1'})}>reset</button>
-        <button onClick={() => dispatch({type: 'SET1', payload: 10})}>set</button>
-        <hr/>
-        <button onClick={() => dispatch({type: 'INC2'})}>inc</button>
-        <button onClick={() => dispatch({type: 'DEC2'})}>dec</button>
-        <button onClick={() => dispatch({type: 'RESET2'})}>reset</button>
-        <button onClick={() => dispatch({type: 'SET2', payload: 20})}>set</button>
+        <h1>Add cat: {state.counter1}</h1>
+        <h1>Add dog: {state.counter2}</h1>
+          <button onClick={() => dispatch({type: ''})}>inc</button>*/}
+          <button onClick={() => dispatch({type: 'DEC1'})}>dec</button>
+        {/*<button onClick={() => dispatch({type: 'INC1'})}>inc</button>*/}
+        {/*<button onClick={() => dispatch({type: 'DEC1'})}>dec</button>*/}
+        {/*<button onClick={() => dispatch({type: 'RESET1'})}>reset</button>*/}
+        {/*<button onClick={() => dispatch({type: 'SET1', payload: 10})}>set</button>*/}
+        {/*<hr/>*/}
+        {/*<button onClick={() => dispatch({type: 'INC2'})}>inc</button>*/}
+        {/*<button onClick={() => dispatch({type: 'DEC2'})}>dec</button>*/}
+        {/*<button onClick={() => dispatch({type: 'RESET2'})}>reset</button>*/}
+        {/*<button onClick={() => dispatch({type: 'SET2', payload: 20})}>set</button>*/}
       </div>
   );
 };
