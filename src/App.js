@@ -1,48 +1,43 @@
-import {useReducer} from "react";
-
-const init = (initialValue) => {
-  return {counter1: initialValue, counter2: initialValue}
-}
-
-const reducer = (state, action) => {
-  switch (action.type) {
-    case 'INC1':
-      return {...state, counter1: state.counter1 + 1}
-    case  'DEC1':
-      return {...state, counter1: state.counter1 - 1}
-    case  'RESET1':
-      return {...state, counter1: 0}
-    case  'SET1':
-      return {...state, counter1: action.payload}
-    case 'INC2':
-      return {...state, counter2: state.counter2 + 1}
-    case  'DEC2':
-      return {...state, counter2: state.counter2 - 1}
-    case  'RESET2':
-      return {...state, counter2: 0}
-    case  'SET2':
-      return {...state, counter2: action.payload}
-  }
-  return {...state}
-}
-
+import {useRef} from "react";
+import {ADD, DELETE,ADD1,DELETE1, useCatReducer, useDogReducer} from "./reducers";
+import css from "./reducers/hi.module.css"
 const App = () => {
-  const [state, dispatch] = useReducer(reducer, 0, init);
-  return (
-      <div>
-        <h1>counter1: {state.counter1}</h1>
-        <h1>counter2: {state.counter2}</h1>
-        <button onClick={() => dispatch({type: 'INC1'})}>inc</button>
-        <button onClick={() => dispatch({type: 'DEC1'})}>dec</button>
-        <button onClick={() => dispatch({type: 'RESET1'})}>reset</button>
-        <button onClick={() => dispatch({type: 'SET1', payload: 10})}>set</button>
-        <hr/>
-        <button onClick={() => dispatch({type: 'INC2'})}>inc</button>
-        <button onClick={() => dispatch({type: 'DEC2'})}>dec</button>
-        <button onClick={() => dispatch({type: 'RESET2'})}>reset</button>
-        <button onClick={() => dispatch({type: 'SET2', payload: 20})}>set</button>
-      </div>
-  );
+    const catRef = useRef();
+    const [state, dispatch] = useCatReducer();
+
+    const addCat = () => {
+        const newCat = catRef.current.value;
+        dispatch({type: ADD, payload: {cat: newCat}})
+    }
+    const dogRef = useRef();
+    const [state1, dispatch1] = useDogReducer();
+
+    const addDog = () => {
+        const newDog = dogRef.current.value;
+        dispatch1({type: ADD1, payload: {dog: newDog}})
+    }
+    return (
+        <div className={css.hi}>
+            <div>
+               <h2> Add cat:  <input type="text" ref={catRef} placeholder={'cat name'}/>
+                <button onClick={addCat}>Add</button></h2>
+
+                {state.map(cat => <div key={cat.id}>
+                    {cat.name}
+                    <button onClick={()=>dispatch({type:DELETE, payload: {id:cat.id}})}>Delete</button>
+                </div>)}
+            </div>
+            <div>
+                <h2> Add dog:  <input type="text" ref={dogRef} placeholder={'dog name'}/>
+                <button onClick={addDog}>Add</button></h2>
+
+                {state1.map(dog => <div key={dog.id}>
+                    {dog.name}
+                    <button onClick={()=>dispatch1({type:DELETE1, payload: {id:dog.id}})}>Delete</button>
+                </div>)}
+            </div>
+        </div>
+    );
 };
 
 export {App};
