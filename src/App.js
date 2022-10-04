@@ -1,13 +1,29 @@
 import './App.css';
-import Users from "./components/users/Users";
-import UserChoser from "./components/user-choser/UserChoser";
+import {useEffect} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {LOAD_COMMENTS, loadCommnets,LOAD_USERS} from "./index";
+import {type} from "@testing-library/user-event/dist/type";
 
 function App() {
-  return (<div>
-    <h2>app component header</h2>
-    <Users/>
 
-    <UserChoser/>
+
+    let state = useSelector(state => state.userReducer);
+    console.log(state);
+    let dispatch = useDispatch();
+
+
+    useEffect(() => {
+    fetch('https://jsonplaceholder.typicode.com/users')
+        .then(value => value.json())
+        .then(value => {
+          dispatch(LOAD_COMMENTS(value));
+        });
+
+  }, []);
+
+    return (<div>
+
+
 
   </div>);
 }
