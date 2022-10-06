@@ -1,31 +1,18 @@
-import './App.css';
-import {useEffect} from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {LOAD_COMMENTS, loadCommnets,LOAD_USERS} from "./index";
-import {type} from "@testing-library/user-event/dist/type";
+import {Route, Routes} from "react-router-dom";
+import {MainLayout} from "./layouts";
+import {CommentsPage, PostsPage, SingleUserPage, UsersPage} from "./pages";
 
-function App() {
+const App = () => {
 
-
-    let state = useSelector(state => state.userReducer);
-    console.log(state);
-    let dispatch = useDispatch();
-
-
-    useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/users')
-        .then(value => value.json())
-        .then(value => {
-          dispatch(LOAD_COMMENTS(value));
-        });
-
-  }, []);
-
-    return (<div>
-
-
-
-  </div>);
+    return (
+        <Routes>
+            <Route path={'/'} element={<MainLayout/>}>
+                <Route path={'users'} element={<UsersPage/>}/>
+                <Route path={'users/:id'} element={<SingleUserPage/>}/>
+                <Route path={'posts'} element={<PostsPage/>}/>
+                <Route path={'comments'} element={<CommentsPage/>}/>
+            </Route>
+        </Routes>
+    )
 }
-
-export default App;
+export {App};
