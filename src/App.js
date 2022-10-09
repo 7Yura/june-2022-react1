@@ -1,7 +1,8 @@
-import {Header, Posts, Users} from "./components";
-
-import {Home} from "./components/Home/Home";
 import {Routes,Route} from "react-router-dom";
+
+import {Header, Posts, Users} from "./components";
+import {Home} from "./components/Home/Home";
+
 
 const App = () => {
     return (
