@@ -1,15 +1,15 @@
-import './App.css';
-import Users from "./components/users/Users";
-import UserChoser from "./components/user-choser/UserChoser";
+import {Header, Posts, Users} from "./components";
 
-function App() {
-  return (<div>
-    <h2>app component header</h2>
-    <Users/>
+const App = () => {
+  return (
+      <div>
+        <Header/>
+        <div>
+          <Users/>
+          <Posts/>
+        </div>
+      </div>
+  );
+};
 
-    <UserChoser/>
-
-  </div>);
-}
-
-export default App;
+export {App};
