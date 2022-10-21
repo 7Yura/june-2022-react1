@@ -11,6 +11,7 @@ const Header = () => {
                 <div><Link to={'users'}>Users</Link></div>
                 <div><Link to={'posts'}>Posts</Link></div>
                 {currentUser&&currentUser.name}
+                hi
             </div>
 
         </div>
